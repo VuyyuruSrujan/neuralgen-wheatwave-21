@@ -1,13 +1,14 @@
-
-import React, { useEffect } from 'react';
+import React from 'react';
 import Layout from '@/components/Layout';
 import { useParallax } from '@/hooks/useParallax';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/utils/animations';
+import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 
 const Index = () => {
   const heroBackground = useParallax({ speed: 0.5 });
   const servicesLayer = useParallax({ speed: 0.3, direction: 'up' });
+  const testimonialsLayer = useParallax({ speed: 0.2 });
 
   return (
     <Layout>
@@ -118,6 +119,24 @@ const Index = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+      
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-20 bg-wheat-50 dark:bg-charcoal-900 relative overflow-hidden">
+        <div ref={testimonialsLayer.ref} style={testimonialsLayer.style} className="absolute inset-0 z-0 opacity-30">
+          <div className="pattern-dots h-full w-full"></div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="section-heading text-charcoal-800 dark:text-wheat-100">What Our Clients Say</h2>
+            <p className="section-subheading max-w-2xl mx-auto">
+              Don't just take our word for it. See what our clients have to say about working with us.
+            </p>
+          </div>
+          
+          <TestimonialsCarousel />
         </div>
       </section>
       
